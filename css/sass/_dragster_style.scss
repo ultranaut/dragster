@@ -1,0 +1,53 @@
+@import "global-sass";
+
+
+body {
+  background: #fff;
+}
+
+#container {
+  margin: 40px auto;
+  width: 720px;
+}
+
+#blank {
+  min-height: 400px;
+  padding: 10px;
+  @include border-radius;
+  border: solid 2px #e0e0e0;
+  &.over {
+    border-style: dashed;
+    background: #fcfcfc;
+  }
+}
+
+.mod {
+  margin: 10px;
+  @include border-radius;
+  border: solid 1px #e0e0e0;
+  text-align: center;
+  padding: 6px;
+}
+
+.modules .unit {
+  float: none;
+  margin: 10px auto;
+  width: 100%;
+}
+#blank .unit {
+  @include stack();
+}
+
+.spot {
+  height: 150px;
+}
+.recipe {
+  height: 75px;
+}
+
+
+
+
+[draggable=true] {
+  cursor: move;
+}

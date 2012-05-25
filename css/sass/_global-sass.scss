@@ -1,0 +1,51 @@
+@mixin columns($count:2, $gap:20px, $rule:none) {
+  -moz-column-count:    $count;
+  -moz-column-gap:      $gap;
+  -moz-column-rule:     $rule;
+
+  -webkit-column-count: $count;
+  -webkit-column-gap:   $gap;
+  -webkit-column-rule:  $rule;
+
+   column-count:        $count;
+   column-gap:          $gap;
+   column-rule:         $rule;
+}
+
+/* inline-block for "stacking" modules
+    http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
+@mixin stack() {
+  float: none;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+}
+
+@mixin linear-gradient($from, $to, $ie:1) {
+  @if $ie != 1 {
+    background-color: $to;
+  }
+
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+  background-image: -ms-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $from),color-stop(1, $to));
+  background-image: -webkit-linear-gradient($from, $to);
+
+  @if $ie == 1 {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}'));
+  }
+}
+
+@mixin border-radius($radius:10px) {
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+@mixin ksb10($fontsize:10px) { font: normal 600 $fontsize kulturista-web,serif; line-height: 10px; }
+@mixin ksb15($fontsize:15px) { font: normal 600 $fontsize kulturista-web,serif; line-height: 15px; }
+@mixin ksb18($fontsize:18px) { font: normal 600 $fontsize kulturista-web,serif; line-height: 18px; }
